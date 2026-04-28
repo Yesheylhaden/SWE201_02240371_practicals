@@ -11,7 +11,6 @@ import LoadingScreen from '../Screen/LoadingScreen';
 import SuccessAnimation from '../Screen/SuccessAnimation';
 import AntDesign from '@expo/vector-icons/AntDesign';
 
-
 const Tab = createBottomTabNavigator();
 
 export default function BottomTabs() {

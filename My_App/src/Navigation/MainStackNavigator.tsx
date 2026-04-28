@@ -10,8 +10,6 @@ import MoveRight from '../Screen/MoveRight';
 import Animated from '../Screen/AnimatedTodoList';
 import LoadingScreen from '../Screen/LoadingScreen';
 import SuccessAnimation from '../Screen/SuccessAnimation';
-import "../Screen/SuccessAnimation"
-
 
 const Stack = createStackNavigator();
 
@@ -32,7 +30,7 @@ export default function MainStackNavigator() {
       <Stack.Screen name="MoveRight" component={MoveRight} />
       <Stack.Screen name="Animated" component={Animated} />
       <Stack.Screen name="Loading" component={LoadingScreen} />
-      <Stack.Screen name="SuccessAnimation" component={SuccessAnimation} /> 
+      <Stack.Screen name="SuccessAnimation" component={SuccessAnimation} />
     </Stack.Navigator>
   );
 }
