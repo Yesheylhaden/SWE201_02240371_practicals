@@ -1,14 +1,3 @@
-// src/components/TaskCard.tsx
-// ─────────────────────────────────────────────────────────────────────────────
-// Renders a single task row.
-//
-// Part 4 actions wired:
-//   Tap row       → TOGGLE_DONE
-//   Tap ✏️         → inline EDIT_TASK form (exercise)
-//
-// Part 5 mini exercise 2:
-//   Shows a "New ✨" badge for tasks created within the last 5 minutes.
-// ─────────────────────────────────────────────────────────────────────────────
 import React, { useState, useEffect } from 'react';
 import {
   View, Text, TextInput, TouchableOpacity, StyleSheet,

@@ -1,18 +1,3 @@
-// src/hooks/useTasks.ts
-// ─────────────────────────────────────────────────────────────────────────────
-// Part 5 – Custom Hook 2 (Optional / advanced)
-// Encapsulates useReducer + AsyncStorage persistence in one hook.
-// API matches the spec exactly: returns { tasks, dispatch }
-// Plus convenience helpers added on top for cleaner component code.
-//
-// Spec version (web):
-//   export function useTasks() {
-//     const [state, dispatch] = useReducer(taskReducer, initialTaskState);
-//     useEffect(() => { /* load */ }, []);
-//     useEffect(() => { /* persist */ }, [state.tasks]);
-//     return { tasks: state.tasks, dispatch };
-//   }
-// ─────────────────────────────────────────────────────────────────────────────
 import { useReducer, useEffect, useState, useCallback } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
@@ -29,7 +14,6 @@ export function useTasks() {
   const [state, dispatch] = useReducer(taskReducer, initialTaskState);
   const [loading, setLoading] = useState(true);
 
-  // ── Effect 1: load from AsyncStorage on mount ─────────────────────────────
   useEffect(() => {
     AsyncStorage.getItem(STORAGE_KEY)
       .then((raw) => {
@@ -41,7 +25,6 @@ export function useTasks() {
       .finally(() => setLoading(false));
   }, []);
 
-  // ── Effect 2: persist whenever tasks change ───────────────────────────────
   useEffect(() => {
     if (!loading) {
       AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(state.tasks)).catch(
@@ -50,12 +33,11 @@ export function useTasks() {
     }
   }, [state.tasks, loading]);
 
-  // ── Effect 3: log count changes (Part 2 exercise carried forward) ─────────
   useEffect(() => {
     console.log(`[useTasks] Task count: ${state.tasks.length}`);
   }, [state.tasks.length]);
 
-  // ── Convenience dispatchers (built on top of raw dispatch) ────────────────
+  // Convenience dispatchers 
   const addTask = useCallback(
     (title: string, priority: Priority) =>
       dispatch({
@@ -80,14 +62,12 @@ export function useTasks() {
     []
   );
 
-  // ── Derived values ────────────────────────────────────────────────────────
   const doneCount    = state.tasks.filter((t) => t.done).length;
   const pendingCount = state.tasks.length - doneCount;
 
-  // Return raw dispatch too (matches spec API) plus convenience helpers
   return {
     tasks: state.tasks,
-    dispatch,          // raw dispatch — matches spec: { tasks, dispatch }
+    dispatch,         
     loading,
     addTask,
     toggleDone,

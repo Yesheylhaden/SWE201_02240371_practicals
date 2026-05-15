@@ -1,12 +1,3 @@
-// src/reducers/taskReducer.ts
-// ─────────────────────────────────────────────────────────────────────────────
-// Part 4 – useReducer
-// Actions exactly as defined in the activity spec:
-//   ADD_TASK · TOGGLE_DONE · CLEAR_COMPLETED · LOAD_FROM_STORAGE
-// Plus the Part-4 exercise action:
-//   EDIT_TASK
-// ─────────────────────────────────────────────────────────────────────────────
-
 export type Priority = 'low' | 'normal' | 'high';
 
 export type Task = {
@@ -17,7 +8,7 @@ export type Task = {
   createdAt: number;
 };
 
-// ── Initial state object (matches activity spec shape) ──────────────────────
+// Initial state object 
 export type TaskState = {
   tasks: Task[];
 };
@@ -26,7 +17,7 @@ export const initialTaskState: TaskState = {
   tasks: [],
 };
 
-// ── Action union type ────────────────────────────────────────────────────────
+// Action union type
 export type TaskAction =
   | { type: 'LOAD_FROM_STORAGE'; tasks: Task[] }
   | { type: 'ADD_TASK';          task: Omit<Task, 'done' | 'createdAt'> }
@@ -34,7 +25,7 @@ export type TaskAction =
   | { type: 'CLEAR_COMPLETED' }
   | { type: 'EDIT_TASK';         id: number; title: string };
 
-// ── Reducer ──────────────────────────────────────────────────────────────────
+// Reducer 
 export function taskReducer(state: TaskState, action: TaskAction): TaskState {
   switch (action.type) {
 

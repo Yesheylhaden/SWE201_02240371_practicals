@@ -1,8 +1,3 @@
-// src/components/ClockBadge.tsx
-// ─────────────────────────────────────────────────────────────────────────────
-// Part 5 – Mini Exercise 3
-// Renders the live clock from useClock() in the header area.
-// ─────────────────────────────────────────────────────────────────────────────
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';

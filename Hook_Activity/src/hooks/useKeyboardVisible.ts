@@ -15,7 +15,6 @@ export function useKeyboardVisible() {
       setKeyboardHeight(0);
     });
 
-    // Cleanup runs on unmount — demonstrating useEffect cleanup
     return () => {
       show.remove();
       hide.remove();

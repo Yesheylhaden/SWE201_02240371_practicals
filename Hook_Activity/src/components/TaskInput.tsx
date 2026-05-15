@@ -10,7 +10,7 @@ import {
 import { useTheme } from '../context/ThemeContext';
 import { Priority } from '../reducers/taskReducer';
 
-// ─── Types ────────────────────────────────────────────────────────────────────
+// Types
 type Props = {
   onAddTask: (title: string, priority: Priority) => void;
 };
@@ -23,9 +23,8 @@ const PRIORITY_COLORS: Record<Priority, string> = {
   high:   '#EF4444',
 };
 
-// ─── Component ────────────────────────────────────────────────────────────────
+// Component
 export default function TaskInput({ onAddTask }: Props) {
-  // ── useState: two independent state variables ─────────────────────────────
   const [title, setTitle]       = useState('');
   const [priority, setPriority] = useState<Priority>('normal');
 
@@ -63,7 +62,7 @@ export default function TaskInput({ onAddTask }: Props) {
         onSubmitEditing={handleSubmit}
       />
 
-      {/* Character counter — turns red over limit */}
+      {/* Character counter */}
       <Text
         style={[
           styles.charCount,
@@ -101,7 +100,7 @@ export default function TaskInput({ onAddTask }: Props) {
         ))}
       </View>
 
-      {/* Live preview — updates on every keystroke */}
+      {/* Live preview */}
       {title.length > 0 && (
         <Text style={[styles.preview, { color: colors.subtext }]}>
           Preview: "{title}" · {priority}
@@ -139,7 +138,7 @@ export default function TaskInput({ onAddTask }: Props) {
   );
 }
 
-// ─── Styles ───────────────────────────────────────────────────────────────────
+// Styles 
 const styles = StyleSheet.create({
   container: {
     borderRadius: 12,
